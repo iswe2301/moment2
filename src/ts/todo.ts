@@ -3,9 +3,17 @@ import { Todo } from './interface';
 
 // Definierar en klass för todolist
 class TodoList {
-    
+
     // Privat egenskap som är en array av Todo objekt, finns endast tillgänglig inuti klassen.
     private todos: Todo[];
+
+    // Konstruktor
+    constructor() {
+        // Initierar todos-arrayen
+        this.todos = [];
+        // Laddar todos från localStorage vid skapandet av ett nytt TodoList-objekt
+        this.loadFromLocalStorage();
+    }
 
     // Metod för att lägga till en ny uppgift till listan. Argument av typ sträng och nummer som returnerar true/false
     addTodo(task: string, priority: number): boolean {
@@ -21,8 +29,25 @@ class TodoList {
             priority: priority as 1 | 2 | 3 // Specificerar number till 1, 2 eller 3 baserat på interfacet
         };
 
-        // Lägger till det nya Todo-objektet till todos-listan.
-        this.todos.push(newTodo);
+        this.todos.push(newTodo); // Lägger till det nya Todo-objektet till todos-listan.
+        this.saveToLocalStorage(); // Anropar metod för att spara listan i localStorage
         return true; // Returnerar true för att giltiga värden har matats in och objektet lagts till i listan
+    }
+
+    // Metod för att spara listan av todos till webbläsarens localStorage
+    saveToLocalStorage(): void {
+        // Konverterar todos-arrayen till en sträng i JSON-format och sparar i localStorage
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+    }
+
+    // Metod för att ladda listan av todos från webbläsarens localStorage
+    loadFromLocalStorage(): void {
+        // Hämtar sparade todos från localStorage och lagrar i variabel av typen sträng/null
+        const savedTodos: string | null = localStorage.getItem("todos");
+        // Kontrollerar om det finns några sparade todos
+        if (savedTodos) {
+            // Konverterar tillbaka strängen till en array av objekt om det finns sparade todos och uppdaterar listan med todos
+            this.todos = JSON.parse(savedTodos);
+        }
     }
 }
