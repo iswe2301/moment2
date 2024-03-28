@@ -1,8 +1,8 @@
 // Importerar modul för todo-interface
-import { Todo } from './interface';
+import { Todo } from "./interface";
 
 // Definierar en klass för todolist
-class TodoList {
+export class TodoList {
 
     // Privat egenskap som är en array av Todo objekt, finns endast tillgänglig inuti klassen.
     private todos: Todo[];
@@ -32,6 +32,19 @@ class TodoList {
         this.todos.push(newTodo); // Lägger till det nya Todo-objektet till todos-listan.
         this.saveToLocalStorage(); // Anropar metod för att spara listan i localStorage
         return true; // Returnerar true för att giltiga värden har matats in och objektet lagts till i listan
+    }
+
+    // Metod för att markera en specifik todo som genomförd baserat på dess index, returnerar inget
+    markTodoCompleted(todoIndex: number): void {
+            // Markerar todon som genomförd genom att sätta completed till true istället för false
+            this.todos[todoIndex].completed = true;
+            // Sparar den uppdaterade listan av todos till localStorage genom att anropa metod
+            this.saveToLocalStorage();
+    }
+
+    // Metod för att hämta alla todos, returnerar en array av todo-objekt
+    getTodos(): Todo[] {
+        return this.todos; // Returnerar hela listan av todo-objekt
     }
 
     // Metod för att spara listan av todos till webbläsarens localStorage
