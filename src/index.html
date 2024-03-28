@@ -12,12 +12,15 @@
 </head>
 
 <body>
+    <!-- Header med logotyp-->
     <header>
         <a href="/"><img src="images/logo.svg" alt="Isa Westling logotyp"></a>
     </header>
 
+    <!-- Huvudinnehåll -->
     <main>
         <h1>Att göra-lista</h1>
+        <!-- Formulär för att lägga till uppgifter -->
         <form id="todo-form">
             <label for="task-input">Uppgiftsbeskrivning <span class="required">*</span></label>
             <input type="text" id="task-input" placeholder="Skriv din uppgift..." required>
@@ -30,12 +33,33 @@
             </select>
             <button type="submit">Lägg till uppgift</button>
         </form>
+
+        <!-- Tabell för att visa todo-uppgifter -->
+        <div id="table-container">
+            <h2>Mina uppgifter</h2>
+            <table id="todo-table">
+                <thead>
+                    <tr>
+                        <th>Uppgift</th>
+                        <th>Prioritet</th>
+                        <th>Status</th>
+                        <th>Åtgärd</th>
+                    </tr>
+                </thead>
+                <!-- Tabellbody där innehållet kommer skrivas ut -->
+                <tbody id="todo-body">
+                </tbody>
+            </table>
+        </div>
     </main>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Isa Westling</p>
         <p>DT208G Programmering i TypeScript</p>
         <p>Webbutvecklingsprogrammet, Mittuniversitetet</p>
     </footer>
+
 </body>
 
 </html>
