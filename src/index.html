@@ -17,7 +17,19 @@
     </header>
 
     <main>
-        
+        <h1>Att göra-lista</h1>
+        <form id="todo-form">
+            <label for="task-input">Uppgiftsbeskrivning <span class="required">*</span></label>
+            <input type="text" id="task-input" placeholder="Skriv din uppgift..." required>
+            <label for="priority">Prioritet <span class="required">*</span></label>
+            <select id="priority" required>
+                <option value="">Välj prioritet</option>
+                <option value="1">Hög prioritet (1)</option>
+                <option value="2">Medel prioritet (2)</option>
+                <option value="3">Låg prioritet (3)</option>
+            </select>
+            <button type="submit">Lägg till uppgift</button>
+        </form>
     </main>
     <footer>
         <p>&copy; 2024 Isa Westling</p>
