@@ -17,6 +17,7 @@ const formEl = document.getElementById("todo-form") as HTMLFormElement; // .. so
 const taskEl = document.getElementById("task-input") as HTMLInputElement; // .. som input
 const priorityEl = document.getElementById("priority") as HTMLSelectElement; //.. som select
 const tableEl = document.getElementById("todo-body") as HTMLTableSectionElement; // ..som tabellsektion
+const popupEl = document.querySelector('.popup') as HTMLElement; // ..som HTML-element
 
 // Skapar händelselyssnare för formuläret vid klick på submit-knappen
 formEl.addEventListener("submit", (event) => {
@@ -26,6 +27,15 @@ formEl.addEventListener("submit", (event) => {
     // Kontrollerar om det lyckades
     if (newToDo) {
         taskEl.value = ""; // Rensar inmatningsfältet för uppgifter
+        displayToDos(); // Uppdaterar visningen av todos
+        popupEl.classList.add("show"); // Lägger till klassen show vid klick på knappen
+        popupEl.innerHTML = "Uppgift skapad!"; // Skapar innehållet för popupen
+
+        // Döljer popup efter 3 sekunder
+        setTimeout(function () {
+            popupEl.classList.remove("show"); // Tar bort show-klassen
+            popupEl.innerHTML = ''; // Tömmer innehållet
+        }, 3000); // 3 sekunder
     } else {
         alert("Vänligen fyll i alla obligatoriska fält!"); // Visar ett felmeddelande om det inte gick att lägga till uppgiften
     }
@@ -63,6 +73,7 @@ function displayToDos() {
         // Skapar en cell för statusknapp
         const btnEl: HTMLTableCellElement = document.createElement('td');
         const completeBtn: HTMLButtonElement = document.createElement('button'); // Skapar en status-knapp för varje todo
+        completeBtn.className = "complete-btn" // Sätter en klass för knappen
         completeBtn.innerHTML = "Klarmarkera"; // Sätter knappens innehåll
         btnEl.appendChild(completeBtn); // Lägger till knappen i cellen
         rowEl.appendChild(btnEl); // Lägger till cellen i raden
@@ -75,6 +86,7 @@ function displayToDos() {
         // Kontrollerar om uppgiften är klarmarkerad
         if (todo.completed) {
             completeBtn.disabled = true; // Inaktiverar knappen
+            rowEl.classList.add("completed-task"); // Lägger till en klass på raden
         }
     });
 }
