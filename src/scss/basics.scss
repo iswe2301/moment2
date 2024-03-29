@@ -34,7 +34,7 @@ h1 {
 
 h2 {
     @include abstracts.heading-style(2.6rem, 3.6rem, 600);
-    margin: 4rem 0 0 0;
+    margin: 4rem 0 1rem 0;
 }
 
 h3 {
