@@ -47,7 +47,7 @@ submitBtn.addEventListener("click", (event) => {
         taskEl.value = ""; // Rensar inmatningsfältet för uppgifter
         displayToDos(); // Uppdaterar visningen av todos
         popupEl.classList.add("show"); // Lägger till klassen show vid klick på knappen
-        popupEl.innerHTML = "Uppgift skapad!"; // Skapar innehållet för popupen
+        popupEl.innerHTML = "Uppgift skapad <i class='fa-solid fa-check'></i>"; // Skapar innehållet för popupen
 
         // Döljer popup efter 3 sekunder
         setTimeout(function () {
@@ -87,11 +87,12 @@ function displayToDos() {
 
             // Skapar en cell för status
             const taskStatus: HTMLTableCellElement = document.createElement('td');
-            taskStatus.innerHTML = todo.completed ? "Klar" : "Pågående"; // Om todon är markerad som klar, sätt cellens innehåll till "Klar", annars till "Pågående"
+            taskStatus.innerHTML = todo.completed ? "Genomförd" : "Pågående"; // Om todon är markerad som klar, sätt cellens innehåll till "Klar", annars till "Pågående"
             rowEl.appendChild(taskStatus); // Lägger till cellen i raden
 
             // Skapar en cell för statusknapp
             const btnEl: HTMLTableCellElement = document.createElement('td');
+            btnEl.className = "btn-Cells"; // Lägger till en klass för cellen
             const completeBtn: HTMLButtonElement = document.createElement('button'); // Skapar en status-knapp för varje todo
             completeBtn.className = "complete-btn" // Sätter en klass för knappen
             completeBtn.innerHTML = "Klarmarkera"; // Sätter knappens innehåll
@@ -103,11 +104,15 @@ function displayToDos() {
                 todos.markTodoCompleted(index); // Anropar metod för att klarmarkera uppgift, skickar med index för todon
                 displayToDos(); // Anropar funktion för att uppdatera viningen av todos
             })
+
             // Kontrollerar om uppgiften är klarmarkerad
             if (todo.completed) {
                 completeBtn.disabled = true; // Inaktiverar knappen
+                completeBtn.innerHTML = "Klarmarkerad <i class='fa-solid fa-check'></i>"; // Ändrar text på knappen
                 rowEl.classList.add("completed-task"); // Lägger till en klass på raden
             }
         });
+    } else {
+        toDoContainer.style.display = "none"; // Döljer tabell-container om inga sparade todos finns
     }
 }
