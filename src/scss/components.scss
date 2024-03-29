@@ -18,9 +18,11 @@
 
 .complete-btn {
     @extend %button-style;
-    width: 12rem;
+    width: 14rem;
     font-size: 1.4rem;
     padding: 0.5rem;
+    margin: 0.5rem 0;
+    letter-spacing: 0.1rem;
     background-color: abstracts.$complete-btn-color;
 
     &:hover {
@@ -29,7 +31,8 @@
 }
 
 // Styling för diabled knapp
-.complete-btn:disabled {
+.complete-btn:disabled,
+.edit-btn:disabled {
     background-color: abstracts.$disabled-btn-color;
     color: abstracts.$disabled-text-color;
     cursor: not-allowed; // Sätter cursor till inte tillåten
@@ -40,16 +43,28 @@
     background-color: abstracts.$complete-background-color;
 }
 
+.btn-Cells {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .delete-btn {
     @extend %button-style;
-    width: 12rem;
+    width: 14rem;
     font-size: 1.4rem;
     padding: 0.5rem;
+    margin: 0.5rem 0;
+    letter-spacing: 0.1rem;
     background-color: abstracts.$delete-btn-color;
 
     &:hover {
         background-color: darken(abstracts.$delete-btn-color, 10%);
     }
+}
+
+#edit-tip {
+    font-size: 1.4rem;
 }
 
 .edit-btn {
