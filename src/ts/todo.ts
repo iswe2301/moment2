@@ -50,7 +50,7 @@ export class TodoList {
 
     // Metod för att hämta alla todos, returnerar en array av todo-objekt
     getTodos(): Todo[] {
-        return this.todos; // Returnerar hela listan av todo-objekt
+        return this.todos.sort((a, b) => a.priority - b.priority); // Returnerar hela listan av todo-objekt, sorterar baserat på prioritet (lägst siffra först = högst prioritet)
     }
 
     // Metod för att spara listan av todos till webbläsarens localStorage
