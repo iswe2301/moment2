@@ -36,10 +36,16 @@ export class TodoList {
 
     // Metod för att markera en specifik todo som genomförd baserat på dess index, returnerar inget
     markTodoCompleted(todoIndex: number): void {
-            // Markerar todon som genomförd genom att sätta completed till true istället för false
-            this.todos[todoIndex].completed = true;
-            // Sparar den uppdaterade listan av todos till localStorage genom att anropa metod
-            this.saveToLocalStorage();
+        // Markerar todon som genomförd genom att sätta completed till true istället för false
+        this.todos[todoIndex].completed = true;
+        // Sparar den uppdaterade listan av todos till localStorage genom att anropa metod
+        this.saveToLocalStorage();
+    }
+
+    // Metod för att radera todo från tabellen baserat på index
+    deleteToDo(index: number): void {
+        this.todos.splice(index, 1); // Tar bort todon från arrayen baserat på index (1 st)
+        this.saveToLocalStorage(); // Sparar den uppdaterade listan till localStorage
     }
 
     // Metod för att hämta alla todos, returnerar en array av todo-objekt
