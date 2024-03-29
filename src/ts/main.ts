@@ -117,6 +117,18 @@ function displayToDos() {
                 completeBtn.innerHTML = "Klarmarkerad <i class='fa-solid fa-check'></i>"; // Ändrar text på knappen
                 rowEl.classList.add("completed-task"); // Lägger till en klass på raden
             }
+
+            // Skapar en raderaknapp för varje todo
+            const deleteBtn: HTMLButtonElement = document.createElement('button');
+            deleteBtn.className = "delete-btn"; // Sätter en klass för knappen
+            deleteBtn.innerHTML = "Radera <i class='fa-solid fa-trash-can'></i>"; // Sätter knappens innehåll
+            btnEl.appendChild(deleteBtn); // Lägger till knappen i samma cell som klarmarkera-knappen
+
+            // Skapar en klickhändelselyssnare för varje raderaknapp
+            deleteBtn.addEventListener("click", () => {
+                todos.deleteToDo(index); // Anropar metod för att radera todon och skickar med index
+                displayToDos(); // Uppdaterar visningen av todos
+            });
         });
     } else {
         toDoContainer.style.display = "none"; // Döljer tabell-container om inga sparade todos finns
