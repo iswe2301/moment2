@@ -6,8 +6,8 @@ main {
   background: abstracts.$bg-color-white;
   width: 80%;
   max-width: 1200px;
-  height: auto;
-  margin: 2rem auto;
+  min-height: 100vh;
+  margin: 0 auto;
   padding: 2rem 4rem;
   position: relative;
 }
