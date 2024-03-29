@@ -12,9 +12,12 @@ $hover-color: darken($link-color, 10%);
 $table-hover: darken($bg-color-white, 10%);
 $text-color: #333;
 $light-text-color: white;
-$add-btn-color: rgb(34, 122, 16);
+$complete-btn-color: rgb(101, 186, 84);
+$complete-background-color: rgb(214, 234, 214);
 $edit-btn-color: rgb(240, 153, 53);
 $delete-btn-color: rgb(236, 58, 58);
+$disabled-btn-color: #ccc;
+$disabled-text-color: #666;
 
 // Extend för knappar inkl. hover
 %button-style {
