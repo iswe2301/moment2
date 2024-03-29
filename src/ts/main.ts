@@ -78,6 +78,12 @@ function displayToDos() {
             // Skapar en cell för uppgiftsbeskrivningen
             const taskDesc: HTMLTableCellElement = document.createElement('td');
             taskDesc.innerHTML = todo.task; // Sätter cellens innehåll till todons task
+            (taskDesc as any).contentEditable = true; // Gör cellen redigerbar, sätter any för att typningen ska bli rätt
+            // Lägger till händelselyssnare på cellen när användaren klickar utanför cellen (förlorar fokus)
+            taskDesc.addEventListener("blur", () => {
+                todo.task = taskDesc.innerHTML || ""; // Uppdaterar todo-objektet med den nya stränngen eller tom textsträng
+                todos.saveToLocalStorage(); // Sparar ändringen till localStorage
+            });
             rowEl.appendChild(taskDesc); // Lägger till cellen i raden
 
             // Skapar en cell för prioritet
