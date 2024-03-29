@@ -16,6 +16,30 @@
     }
 }
 
+.complete-btn {
+    @extend %button-style;
+    width: 12rem;
+    font-size: 1.4rem;
+    padding: 0.5rem;
+    background-color: abstracts.$complete-btn-color;
+
+    &:hover {
+        background-color: darken(abstracts.$complete-btn-color, 10%);
+    }
+}
+
+// Styling för diabled knapp
+.complete-btn:disabled {
+    background-color: abstracts.$disabled-btn-color;
+    color: abstracts.$disabled-text-color;
+    cursor: not-allowed; // Sätter cursor till inte tillåten
+}
+
+// Klass för bagrundsfärg till klarmarkerade rader i tabellen
+.completed-task {
+    background-color: abstracts.$complete-background-color;
+}
+
 .delete-btn {
     @extend %button-style;
     width: 12rem;
@@ -63,6 +87,20 @@
 .popup.show {
     height: 5rem;
     padding-top: 1rem;
+}
+
+// ID-styling för felmeddelande
+#error-message {
+    display: none;
+    justify-content: center;
+    color: abstracts.$delete-btn-color;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+// Styling för obligatorisk *
+.required {
+    color: abstracts.$delete-btn-color;
 }
 
 // Ökar bredd vid mindre skrämar (max 600px)
